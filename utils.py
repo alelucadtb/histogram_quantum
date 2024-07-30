@@ -1,25 +1,29 @@
-def find_closest_element(vector, a):
+def find_min_diff(vector, a):
     # Check if the vector is empty
     if not vector:
-        return None
+        return None, None
     
     # Initialize variables for the minimum difference and nearest element
-    min_diff = float('inf') 
+    min_diff = 10**18
     closest_element = None
-    
-    # Itera through the vector
-    for b in vector:
+    index_min = -1
+
+    # Iterate through the vector
+    for index, b in enumerate(vector):
         diff = abs(a - b)
         if diff < min_diff:
             min_diff = diff
             closest_element = b
+            index_min = index
     
-    return min_diff
+    return min_diff, index_min
 
 
-def convert_to_float(s):
+def convert_to_int(s):
     try:
-        return float(s)
+        float_value = float(s)  # Convert the string to a float
+        int_value = int(float_value)
+        return int_value
     except ValueError:
-        print(f"Errore: '{s}' non è un numero valido.")
+        print("Error")
         return None
